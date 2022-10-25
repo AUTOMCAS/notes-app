@@ -22,6 +22,7 @@ describe('notesView', () => {
 
       const notes = document.querySelectorAll('div.note')
       expect(document.querySelectorAll('div.note')[0].textContent).toBe("EAT");
+      expect(document.querySelectorAll('div.note').length).toBe(1)
     })
 
     it('Adds second input note on button click', () => {
@@ -38,8 +39,11 @@ describe('notesView', () => {
       buttonEl.click()
 
       const notes = document.querySelectorAll('div.note')
-      expect(document.querySelectorAll('div.note')[1].textContent).toBe("THIS");
+      expect(document.querySelectorAll('div.note')[0].textContent).toBe("THIS");
+      expect(document.querySelectorAll('div.note')[1].textContent).toBe("AGAIN");
+      expect(document.querySelectorAll('div.note').length).toBe(2)
     })
+
   })
 })
 
