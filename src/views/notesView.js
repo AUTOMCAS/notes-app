@@ -1,32 +1,33 @@
 class NotesView {
-  constructor (notesModel) {
+  constructor (notesModel, client) {
     this.notesModel = notesModel
-
+    this.client = client;
+    this.mainContainerEl = document.querySelector('#main-container');
     this.buttonEl = document.querySelector('#add-note-button')
 
     this.buttonEl.addEventListener('click', () => {
-      this.displayNotes()
+      const newNote = document.querySelector('#add-note-input').value;
+      this.addNewNote(newNote);
+      document.querySelector('#add-note-input').value = '';
+      //this.displayNotes()
     })
-
-    this.inputEl = document.querySelector('#input')
   }
 
   displayNotes () {
-    const inputEl = this.inputEl
-    this.notesModel.addNote(inputEl.value)
-    this.inputEl.value = ""
-    
-    const allNotes = document.querySelectorAll('div.note')
-    allNotes.forEach(el => el.remove())
-
+    document.querySelectorAll('div.note').forEach(el => el.remove())
+      
     const notes = this.notesModel.getNotes()
     notes.forEach((note => {
       const newDivEl = document.createElement('div')
-
       newDivEl.textContent = note
       newDivEl.className = 'note'
       document.body.append(newDivEl)
     }))
+  }
+
+  addNewNote(newNote) {
+    this.notesModel.addNote(newNote);
+    this.displayNotes();
   }
 }
 

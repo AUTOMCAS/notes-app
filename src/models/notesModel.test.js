@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 const NotesModel = require('./notesModel')
 
 describe('NotesModel', () => {
@@ -22,6 +26,7 @@ describe('NotesModel', () => {
 
   describe('reset()', () => {
     it('returns empty array', () => {
+      notesModel.addNote('Go to the gym')
       notesModel.reset()
       expect(notesModel.getNotes()).toEqual([])
     })
