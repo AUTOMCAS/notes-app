@@ -9,3 +9,8 @@ class NotesClient {
 }
 
 module.exports = NotesClient;
+
+
+// const notes = [{notes: 'a note'}];
+// const resp = {data: notes};
+// resp.data[0].notes
